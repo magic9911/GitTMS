@@ -200,7 +200,7 @@ Public Class frmReservation
         frmReservationRecord.dtpDateFrom.Text = Today
         frmReservationRecord.dtpDateTo.Text = Today
         frmReservationRecord.txtGuestName.Text = ""
-        frmReservationRecord.GetData()
+        'frmReservationRecord.GetData()
         frmReservationRecord.ShowDialog()
     End Sub
 
@@ -284,7 +284,7 @@ date_txt & "','" & time_txt & "','" & txtGuestName.Text & "','" & RichTextBox1.T
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         frmGuestRecord2.mode = 1
-        frmGuestRecord2.GetData()
+        'frmGuestRecord2.GetData()
         frmGuestRecord2.ShowDialog()
     End Sub
 

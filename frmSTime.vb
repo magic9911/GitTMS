@@ -256,7 +256,7 @@ date_txt & "','" & time_txt & "','" & txtName.Text & "','" & note & "','" & User
         Me.Reset()
         frmGuestRecord2.mode = 0
         frmGuestRecord2.ShowDialog()
-        frmGuestRecord2.GetData()
+        'frmGuestRecord2.GetData()
     End Sub
 
     Private Sub txtVip_TextChanged(sender As Object, e As EventArgs) Handles txtVip.TextChanged

@@ -185,7 +185,7 @@ Public Class frmReservationRecord
     End Sub
 
     Private Sub frmReservationRecord_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        GetData()
+        'GetData()
     End Sub
 
 End Class

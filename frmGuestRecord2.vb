@@ -9,7 +9,7 @@ Public Class frmGuestRecord2
     End Sub
 
     Private Sub frmGuestRecord_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        GetData()
+        'GetData()
     End Sub
 
     Private Sub dataGridView1_RowHeaderMouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles dataGridView1.RowHeaderMouseClick

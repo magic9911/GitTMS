@@ -66,9 +66,10 @@ Public Class frmRoomsAvailability
             MyData = mycommand.ExecuteReader
             DataGridView1.Rows.Clear()
             While (MyData.Read() = True)
-                DataGridView1.Rows.Add(MyData(0), getTime(MyData(2)), MyData(3), MyData(1), MyData(4), MyData(5))
+                DataGridView1.Rows.Add(MyData(0), getTime(MyData(2)), MyData(3), MyData(1), countseat(MyData(0)), MyData(5))
             End While
             Conn.Close()
+
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.StackTrace, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -79,13 +80,13 @@ Public Class frmRoomsAvailability
     End Sub
 
     Private Sub frmRoomsAvailability_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        countseat()
+        'countseat()
     End Sub
 
-    Private Sub countseat()
+    Private Function countseat(idshow As String) As Integer
         Try
             Dim sid As String = GetAllShow()
-            Dim idshow As String() = sid.Split(",")
+            'Dim idshow As String() = sid.Split(",")
 
             Dim Conn As MySqlConnection
             Conn = New MySqlConnection
@@ -96,27 +97,28 @@ Public Class frmRoomsAvailability
                 msgError()
             End Try
 
-            For i As Integer = 0 To idshow.Length - 2
+            'For i As Integer = 0 To idshow.Length - 2
 
-                Dim MyAdapter As New MySqlDataAdapter
-                Dim sqlquery = "Select COUNT(*) FROM seats where id_showtime = '" & idshow(i) & "' And status = '2'"
-                Dim mycommand As New MySqlCommand()
-                mycommand.Connection = Conn
-                mycommand.CommandText = sqlquery
-                MyAdapter.SelectCommand = mycommand
-                Dim Count As Integer = mycommand.ExecuteScalar
+            Dim MyAdapter As New MySqlDataAdapter
+            Dim sqlquery = "Select COUNT(*) FROM seats where id_showtime = '" & idshow & "' And status != '0'"
+            Dim mycommand As New MySqlCommand()
+            mycommand.Connection = Conn
+            mycommand.CommandText = sqlquery
+            MyAdapter.SelectCommand = mycommand
+            Dim Count As Integer = mycommand.ExecuteScalar
+            Dim txtquery As String = "UPDATE showtime SET s_count = '" & Count & "' where id='" & idshow & "'"
 
-                Dim txtquery As String = "UPDATE showtime SET s_count = '" & Count & "' where id='" & idshow(i) & "'"
+            UpdateData(txtquery)
 
-                UpdateData(txtquery)
-
-            Next
+            'Next
 
             Conn.Close()
+            Return Count
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.StackTrace, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return 0
         End Try
-    End Sub
+    End Function
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Try

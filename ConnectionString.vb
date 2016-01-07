@@ -13,10 +13,10 @@ Module ConnectionString
     'Public Const cs As String = "Server=192.168.1.208;User Id=root;Password=1ca40a6114b928c6f5fabaebde2daeb6;Database=TMS"
     'Public Const cs As String = "Server=127.0.0.1;User Id=root;Password=1ca40a6114b928c6f5fabaebde2daeb6;Database=TMS"
 
-    'Public Const cs As String = "Server=127.0.0.1;User Id=root;Password=lionking;Database=tms"
+    Public Const cs As String = "Server=127.0.0.1;User Id=appuser;Password=password;Database=tms"
 
     'Public Const cs As String = "Server=192.168.1.1;User Id=root;Password=lionking19;Database=ticket"
-    Public Const cs As String = "Server=192.168.1.1;User Id=root;Password=lionking19;Database=tms"
+    'Public Const cs As String = "Server=192.168.1.1;User Id=root;Password=lionking19;Database=tms"
 
     Public fullScreen As Boolean = False
     Public ShowPrice As Boolean = False
